@@ -11,7 +11,7 @@ const UserCta = ({ auth, setTab, Tab }) => {
             <div className="w-1/3 flex items-center justify-center">
                 <img
                     className="flex justify-center items-center w-full -mb-5"
-                    src="/img/dashboardU.png" //nanti gambarnya ganti disini
+                    src="/img/TUser.png" //nanti gambarnya ganti disini
                 />
             </div>
             <div className="flex-grow flex flex-col justify-center ">
