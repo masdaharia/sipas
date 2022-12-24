@@ -16,7 +16,7 @@ class CreateDiseasesTable extends Migration
         Schema::create('diseases', function (Blueprint $table) {
             $table->id();
             $table->string('kode_penyakit')->unique();
-            $table->text('nama_penyakit')->unique();
+            $table->string('nama_penyakit', 200)->unique();
             $table->text('tingkat_keparahan');
             $table->text('keterangan');
             $table->text('saran');
