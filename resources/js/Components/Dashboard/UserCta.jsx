@@ -5,7 +5,7 @@ const UserCta = ({ auth, setTab, Tab }) => {
     return (
         <div
             className={`flex bg-white p-5 gap-3 rounded-lg h-full ${
-                Tab == false ? "visible" : "hidden"
+                !Tab ? "visible" : "hidden"
             }`}
         >
             <div className="w-1/3 flex items-center justify-center">

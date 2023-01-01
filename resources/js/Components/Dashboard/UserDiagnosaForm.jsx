@@ -8,7 +8,6 @@ const UserDiagnosaForm = ({ gejala, Tab, setTab }) => {
     const { register, handleSubmit } = useForm();
     const [Error, setError] = useState();
     const diagnosa = (data) => {
-        // console.log(data);
         Inertia.post("diagnosa", data, {
             onSuccess: () => {
                 toast.success("Diagnosa Berhasil !");
@@ -25,7 +24,7 @@ const UserDiagnosaForm = ({ gejala, Tab, setTab }) => {
             action=""
             onSubmit={handleSubmit(diagnosa)}
             className={`overflow-y-visible flex justify-around bg-gray-200 p-4 rounded-2xl ${
-                Tab == false ? "hidden" : "visible"
+                !Tab  ? "hidden" : "visible"
             }`}
         >
             <div className="w-2/4 justify-center ">
