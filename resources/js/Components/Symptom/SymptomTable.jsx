@@ -123,6 +123,7 @@ export default function SymptomTable(props) {
                         "text-gray-800 px-2 py-1 rounded bg-gray-100 hover:bg-gray-200",
                     paginationButtonNext:
                         "text-gray-800 px-2 py-1 rounded bg-gray-100 hover:bg-gray-200",
+                    notfound: "font-semibold h-48 bg-empty text-center"    
                 }}
                 language={{
                     search: {
