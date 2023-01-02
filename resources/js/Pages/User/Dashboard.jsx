@@ -23,9 +23,6 @@ export default function Dashboard() {
 
                     {!Tab && (
                         <>
-                            <div className="col-span-2">
-                                <UserDiagramBulat />
-                            </div>
                             <div className="col-span-2 h-full">
                                 <UserDiagnosaTerakhir />
                             </div>
