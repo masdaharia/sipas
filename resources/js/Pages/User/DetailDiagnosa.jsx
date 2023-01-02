@@ -334,7 +334,7 @@ export default function DetailDiagnosa() {
                             href={`${
                                 auth?.user.roles[0].name == "user"
                                     ? "/user/detail-" + riwayat?.id
-                                    : "/dashboard"
+                                    : "/admin/detail-" + riwayat?.id
                             }`}
                             className="p-3 rounded-lg text-white bg-red-400 text-center"
                         >
