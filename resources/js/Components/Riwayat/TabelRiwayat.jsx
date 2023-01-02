@@ -2,6 +2,7 @@ import { Inertia } from "@inertiajs/inertia";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import * as MdIcons from "react-icons/md";
+import * as FaIcons from "react-icons/fa";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { dialogToggle, modalData, modalToggle } from "../../Store/Modal";
 import ZenDialog from "../ZenDialog";
@@ -54,11 +55,11 @@ export default function TabelRiwayat(props) {
                                 deleteHistory(riwayat?.id);
                             }}
                             aria-label="delete"
-                            className="p-2 rounded-lg bg-yellow-100 hover:bg-yellow-200 transition duration-200"
+                            className="p-2 rounded-lg bg-red-100 hover:bg-red-200 transition duration-200"
                         >
-                            <MdIcons.MdClose
+                            <FaIcons.FaTrash
                                 size={16}
-                                className="text-yellow-400"
+                                className="text-red-400"
                             />
                         </button>
                     </div>
@@ -81,6 +82,7 @@ export default function TabelRiwayat(props) {
                             href={"detail-" + riwayat?.id}
                             className="p-2 rounded-lg bg-yellow-100 hover:bg-yellow-200 transition duration-200"
                         >
+                            {/* <IoIcons.IoEyeSharp */}
                             <MdIcons.MdLooks
                                 size={16}
                                 className="text-yellow-400"
@@ -91,11 +93,11 @@ export default function TabelRiwayat(props) {
                                 deleteHistory(riwayat?.id);
                             }}
                             aria-label="delete"
-                            className="p-2 rounded-lg bg-yellow-100 hover:bg-yellow-200 transition duration-200"
+                            className="p-2 rounded-lg bg-red-100 hover:bg-red-200 transition duration-200"
                         >
-                            <MdIcons.MdClose
+                            <FaIcons.FaTrash
                                 size={16}
-                                className="text-yellow-400"
+                                className="text-Red-400"
                             />
                         </button>
                     </div>
@@ -109,7 +111,8 @@ export default function TabelRiwayat(props) {
                 { name: "No", width: "5%" },
                 { name: "Tanggal Diagnosa", width: "40%" },
                 "Diagnosis",
-                { name: "Aksi" },
+                { name: "Aksi", width: "10px" },
+                { name: "", width: "10px" },
             ];
         } else if (user == "admin") {
             return [
@@ -118,7 +121,8 @@ export default function TabelRiwayat(props) {
                 "Nama",
                 "Umur",
                 "Diagnosis",
-                { name: "Aksi" },
+                { name: "Aksi", width: "10px" },
+                { name: "", width: "10px" },
             ];
         }
     };

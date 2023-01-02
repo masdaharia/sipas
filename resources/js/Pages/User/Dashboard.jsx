@@ -20,10 +20,10 @@ export default function Dashboard() {
                     <div className="col-span-4 h-full ">
                         <UserCta auth={auth} setTab={setTab} Tab={Tab} />
                     </div>
-                    <div className="col-span-2">
+                    {/* <div className="col-span-2">
                         <UserDiagramBulat />
-                    </div>
-                    <div className="col-span-3 ">
+                    </div> */}
+                    <div className="col-span-2 h-full">
                         <UserDiagnosaTerakhir />
                     </div>
                     <div className="col-span-3"></div>
