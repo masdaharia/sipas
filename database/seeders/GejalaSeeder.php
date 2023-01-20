@@ -58,7 +58,7 @@ class GejalaSeeder extends Seeder
             ],
             [
                 'kode_gejala' => 'G011',
-                'nama_gejala' => 'Benjolan berukuran <5mm, seperti ujung beras',
+                'nama_gejala' => 'Benjolan berukuran <5mm',
             ],
             [
                 'kode_gejala' => 'G012',

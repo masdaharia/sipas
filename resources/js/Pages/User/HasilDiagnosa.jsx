@@ -9,12 +9,12 @@ export default function HasilDiagnosa() {
     const hasildiagnosa = JSON.parse(riwayat?.hasildiagnosa);
     console.log(hipotesa, hasildiagnosa);
     const showhasil = (data) => {
-        let lenght = data.lenght;
+        let length = data.length;
         return data?.map((data, key) => (
             <span key={key}>
                 {""}
                 {data}
-                {key == lenght - 1 ? "" : ", "}
+                {key == length - 1 ? "" : ", "}
             </span>
         ));
     };
@@ -46,6 +46,28 @@ export default function HasilDiagnosa() {
         } else {
             // return `storage/${gambar}`;
             return gambar.replace("public", "/storage");
+        }
+    };
+    const showtingkat = (data) => {
+        var p = data.toString();
+        if (p.match(/Nodula.*/) || p.match(/Kista.*/)) {
+            return (
+                <span className="text-white py-1 px-2 capitalize bg-red-400 rounded-lg">
+                    berat
+                </span>
+            );
+        } else if (p.match(/Papula.*/) || p.match(/Pustula.*/)) {
+            return (
+                <span className="text-white py-1 px-2 capitalize bg-orange-400 rounded-lg">
+                    Sedang
+                </span>
+            );
+        } else if (p.match(/Whitehead.*/) || p.match(/Blackhead.*/)) {
+            return (
+                <span className="text-white py-1 px-2 capitalize bg-green-400 rounded-lg">
+                    Ringan
+                </span>
+            );
         }
     };
     return (
@@ -93,6 +115,10 @@ export default function HasilDiagnosa() {
                         </div>
                         <div className="text-lg font-bold">
                             {showhasil(hasildiagnosa?.penyakit)}
+                        </div>
+                        <div className="-pt-2">
+                            Tingkat Keparahan :{" "}
+                            {showtingkat(hasildiagnosa?.penyakit)}
                         </div>
                     </div>
                 </div>

@@ -10,14 +10,36 @@ const UserDiagnosaTerakhir = () => {
         ? JSON.parse(lastcheck?.hasildiagnosa)
         : null;
     const showhasil = (data) => {
-        let lenght = data.lenght;
+        let length = data.length;
         return data?.map((data, key) => (
             <span className="text-center" key={key}>
                 {""}
                 {data}
-                {key == lenght - 1 ? " " : ", "}
+                {key == length - 1 ? " " : ", "}
             </span>
         ));
+    };
+    const showtingkat = (data) => {
+        var p = data.toString();
+        if (p.match(/Nodula.*/) || p.match(/Kista.*/)) {
+            return (
+                <span className="text-white py-1 px-2 capitalize bg-red-400 rounded-lg">
+                    berat
+                </span>
+            );
+        } else if (p.match(/Papula.*/) || p.match(/Pustula.*/)) {
+            return (
+                <span className="text-white py-1 px-2 capitalize bg-orange-400 rounded-lg">
+                    Sedang
+                </span>
+            );
+        } else if (p.match(/Whitehead.*/) || p.match(/Blackhead.*/)) {
+            return (
+                <span className="text-white py-1 px-2 capitalize bg-green-400 rounded-lg">
+                    Ringan
+                </span>
+            );
+        }
     };
     return (
         <>
@@ -39,6 +61,10 @@ const UserDiagnosaTerakhir = () => {
                         </div>
                         <div className="text-lg text-center font-bold w-full">
                             {showhasil(hasildiagnosa?.penyakit)}
+                        </div>
+                        <div className="">
+                            Tingkat Keparahan :{" "}
+                            {showtingkat(hasildiagnosa?.penyakit)}
                         </div>
                     </div>
                 </div>
