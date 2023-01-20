@@ -2,7 +2,6 @@ import React from "react";
 import { useRecoilState } from "recoil";
 import { modalData, modalToggle } from "../../Store/Modal";
 import * as MdIcons from "react-icons/md";
-import DiseaseTable from "../../Components/Disease/DiseaseTable";
 import Admin from "../../Layouts/Admin";
 import ModalPenyakit from "../../Components/Penyakit/ModalPenyakit";
 import TabelPenyakit from "../../Components/Penyakit/TabelPenyakit";

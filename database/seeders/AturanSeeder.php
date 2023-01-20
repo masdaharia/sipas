@@ -188,7 +188,7 @@ class AturanSeeder extends Seeder
                 'gejala_id' => '8',
                 'bobot' => "0.8",
             ],
-            //Aturan Gejala 9
+            // Aturan Gejala 9
             [
                 'penyakit_id' => '3',
                 'gejala_id' => '9',
@@ -220,11 +220,11 @@ class AturanSeeder extends Seeder
                 'gejala_id' => '10',
                 'bobot' => "0.6",
             ],
-            [
-                'penyakit_id' => '3',
-                'gejala_id' => '10',
-                'bobot' => "0.6",
-            ],
+            // [
+            //     'penyakit_id' => '3',
+            //     'gejala_id' => '10',
+            //     'bobot' => "0.6",
+            // ],
             //Aturan Gejala 11
             [
                 'penyakit_id' => '1',
@@ -298,6 +298,11 @@ class AturanSeeder extends Seeder
             ],
             [
                 'penyakit_id' => '2',
+                'gejala_id' => '15',
+                'bobot' => "0.8",
+            ],
+            [
+                'penyakit_id' => '3',
                 'gejala_id' => '15',
                 'bobot' => "0.8",
             ],
@@ -399,26 +404,26 @@ class AturanSeeder extends Seeder
                 'bobot' => "0.4",
             ],
             //Aturan Gejala 23
-            [
-                'penyakit_id' => '1',
-                'gejala_id' => '23',
-                'bobot' => "0.8",
-            ],
-            [
-                'penyakit_id' => '2',
-                'gejala_id' => '23',
-                'bobot' => "0.8",
-            ],
-            [
-                'penyakit_id' => '3',
-                'gejala_id' => '23',
-                'bobot' => "0.8",
-            ],
-            [
-                'penyakit_id' => '4',
-                'gejala_id' => '23',
-                'bobot' => "0.8",
-            ],
+            // [
+            //     'penyakit_id' => '1',
+            //     'gejala_id' => '23',
+            //     'bobot' => "0.8",
+            // ],
+            // [
+            //     'penyakit_id' => '2',
+            //     'gejala_id' => '23',
+            //     'bobot' => "0.8",
+            // ],
+            // [
+            //     'penyakit_id' => '3',
+            //     'gejala_id' => '23',
+            //     'bobot' => "0.8",
+            // ],
+            // [
+            //     'penyakit_id' => '4',
+            //     'gejala_id' => '23',
+            //     'bobot' => "0.8",
+            // ],
             [
                 'penyakit_id' => '5',
                 'gejala_id' => '23',
