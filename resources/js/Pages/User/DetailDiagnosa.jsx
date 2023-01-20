@@ -94,6 +94,16 @@ export default function DetailDiagnosa() {
             </span>
         ));
     };
+    const showket = (data) => {
+        let length = data.length;
+        return data?.map((data, key) => (
+            <div key={key}>
+                {"• "}
+                {data}
+                {/* {key == length - 1 ? "" : ", "} */}
+            </div>
+        ));
+    };
     return (
         <Admin judul="Detail Diagnosa">
             <div className="flex flex-col justify-center w-full space-y-8">
@@ -318,11 +328,11 @@ export default function DetailDiagnosa() {
                         </div>
                         <div className="">
                             <h1 className="font-bold">Keterangan</h1>
-                            {showhasil(hasildiagnosa?.keterangan)}
+                            {showket(hasildiagnosa?.keterangan)}
                         </div>
                         <div className="">
                             <h1 className="font-bold">Saran</h1>
-                            {showhasil(hasildiagnosa?.saran)}
+                            {showket(hasildiagnosa?.saran)}
                         </div>
                         <div className="">
                             <span className="font-bold">Bobot : </span>

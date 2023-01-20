@@ -25,8 +25,8 @@ class DashboardController extends Controller
         // dd(User::where('jenis_kelamin', 'like', '%' . 'perempuan' . '%')->count());
         return inertia('Admin/Dashboard', [
             'jumlahdatapengguna' => User::role('user')->count(),
-            'jumlahdatapenyakit' => Symptom::count(),
-            'jumlahdatagejala' => Disease::count(),
+            'jumlahdatapenyakit' => Disease::count(),
+            'jumlahdatagejala' => Symptom::count(),
             'jumlahdataaturan' => Rule::count(),
             'jumlahdataartikel' => artikel::count(),
             'jumlahdatariwayat' => History::count(),

@@ -123,6 +123,10 @@ export default function TabelGejala(props) {
                         "text-gray-800 px-2 py-1 rounded bg-gray-100 hover:bg-gray-200",
                     paginationButtonNext:
                         "text-gray-800 px-2 py-1 rounded bg-gray-100 hover:bg-gray-200",
+<<<<<<< HEAD
+=======
+                    notfound: "font-semibold h-48 bg-empty text-center",
+>>>>>>> 5450697 (diagnosa jika 2 atau lebih penyakit tampilannya sudah rapi)
                 }}
                 language={{
                     search: {
