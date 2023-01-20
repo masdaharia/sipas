@@ -3,7 +3,13 @@ import React from "react";
 
 export default function Navbar(props) {
     return (
-        <div className="z-50 bg-transparent w-full h-fit flex flex-col sm:flex-row justify-between items-center py-5 px-20 fixed top-0">
+        <div
+            className={`z-50 ${
+                props.withBg
+                    ? "bg-gradient-to-r from-blue-400 via-blue-200 to-white"
+                    : "bg-transparent"
+            }  w-full h-fit flex flex-col sm:flex-row justify-between items-center py-5 px-20 fixed top-0`}
+        >
             <Link href="/">
                 <h1 className="text-2xl text-white font-bold">SIPAS</h1>
             </Link>

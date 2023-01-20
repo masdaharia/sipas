@@ -11,7 +11,7 @@ export default function CardArtikel({ data }) {
         return dbUrl.replace("public", "/storage");
     };
     return (
-        <div className="bg-white shadow-md rounded-xl p-4">
+        <div className="bg-white shadow-md rounded-xl p-4 h-max">
             <img
                 className="rounded-md w-full aspect-video object-cover"
                 src={handleUrlGambar(data.gambar)}
