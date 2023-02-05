@@ -4,7 +4,7 @@ import * as MdIcons from "react-icons/md";
 const UserCta = ({ auth, setTab, Tab }) => {
     return (
         <div
-            className={`flex bg-white p-5 gap-3 rounded-lg h-full ${
+            className={`flex bg-white p-5 gap-3 rounded-lg h-full shadow-xl shadow-blue-600/10 ${
                 !Tab ? "visible" : "hidden"
             }`}
         >
@@ -14,7 +14,7 @@ const UserCta = ({ auth, setTab, Tab }) => {
                     src="/img/TUser.png" //nanti gambarnya ganti disini
                 />
             </div>
-            <div className="flex-grow flex flex-col justify-center ">
+            <div className="flex-grow flex flex-col justify-center  ">
                 <div className="mb-1">
                     <h3 className="font-semibold text-gray-700 text-3xl">
                         Hi, {auth?.user?.name}.
@@ -32,7 +32,8 @@ const UserCta = ({ auth, setTab, Tab }) => {
                         onClick={(e) => {
                             setTab(true);
                         }}
-                        className="flex mt-3 items-center text-blue-500 border-2 border-blue-700 px-3 py-1 rounded-xl focus:ring fokus:outline-none focus:ring-blue-200 hover:bg-blue-700 hover:text-white transition-all duration-200 item-center space-x-2"
+                        // className="flex mt-3 items-center text-blue-500 border-2 border-blue-700 px-3 py-1 rounded-xl focus:ring fokus:outline-none focus:ring-blue-200 hover:bg-blue-700 hover:text-white transition-all duration-200 item-center space-x-2"
+                        className="flex mt-3 items-center bg-blue-700 text-white border-2 border-blue px-3 py-1 rounded-xl focus:ring fokus:outline-none focus:ring-blue-500 hover:bg-white hover:text-blue-700 transition-all duration-200 item-center space-x-2"
                     >
                         <MdIcons.MdZoomIn size={16} />
                         <h1>Cek Sekarang</h1>

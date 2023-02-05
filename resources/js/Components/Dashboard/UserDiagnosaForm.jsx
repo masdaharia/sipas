@@ -23,8 +23,8 @@ const UserDiagnosaForm = ({ gejala, Tab, setTab }) => {
         <form
             action=""
             onSubmit={handleSubmit(diagnosa)}
-            className={`overflow-y-visible flex justify-around bg-gray-200 p-4 rounded-2xl ${
-                !Tab  ? "hidden" : "visible"
+            className={`overflow-y-visible flex justify-around shadow-xl shadow-blue-600/10 bg-white p-4 rounded-2xl ${
+                !Tab ? "hidden" : "visible"
             }`}
         >
             <div className="w-2/4 justify-center ">
@@ -63,7 +63,7 @@ const UserDiagnosaForm = ({ gejala, Tab, setTab }) => {
                     onClick={(e) => {
                         setTab(false);
                     }}
-                    className="flex items-center text-blue-500 border-2 border-blue-700 px-3 py-1 rounded-xl focus:ring fokus:outline-none focus:ring-blue-200 hover:bg-blue-700 hover:text-white transition-all duration-200 item-center space-x-2 "
+                    className="flex items-center bg-blue-700 text-white border-2 border-blue-700 px-3 py-1 rounded-xl focus:ring fokus:outline-none focus:ring-blue-200 hover:bg-white hover:text-blue-500 transition-all duration-200 item-center space-x-2 "
                 >
                     <MdIcons.MdZoomIn size={16} />
                     <h1>Diagnosa</h1>

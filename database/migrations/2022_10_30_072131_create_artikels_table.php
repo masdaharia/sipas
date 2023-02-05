@@ -17,7 +17,7 @@ class CreateArtikelsTable extends Migration
             $table->id();
             $table->string('judul_artikel')->unique();
             $table->text('isi_artikel');
-            $table->text('sumber_artikel');
+            $table->string('sumber_artikel');
             $table->string('gambar');
             $table->timestamps();
         });

@@ -404,26 +404,26 @@ class AturanSeeder extends Seeder
                 'bobot' => "0.4",
             ],
             //Aturan Gejala 23
-            // [
-            //     'penyakit_id' => '1',
-            //     'gejala_id' => '23',
-            //     'bobot' => "0.8",
-            // ],
-            // [
-            //     'penyakit_id' => '2',
-            //     'gejala_id' => '23',
-            //     'bobot' => "0.8",
-            // ],
-            // [
-            //     'penyakit_id' => '3',
-            //     'gejala_id' => '23',
-            //     'bobot' => "0.8",
-            // ],
-            // [
-            //     'penyakit_id' => '4',
-            //     'gejala_id' => '23',
-            //     'bobot' => "0.8",
-            // ],
+            [
+                'penyakit_id' => '1',
+                'gejala_id' => '23',
+                'bobot' => "0.8",
+            ],
+            [
+                'penyakit_id' => '2',
+                'gejala_id' => '23',
+                'bobot' => "0.8",
+            ],
+            [
+                'penyakit_id' => '3',
+                'gejala_id' => '23',
+                'bobot' => "0.8",
+            ],
+            [
+                'penyakit_id' => '4',
+                'gejala_id' => '23',
+                'bobot' => "0.8",
+            ],
             [
                 'penyakit_id' => '5',
                 'gejala_id' => '23',

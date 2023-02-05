@@ -16,7 +16,7 @@ class CreateSymptomsTable extends Migration
         Schema::create('symptoms', function (Blueprint $table) {
             $table->id();
             $table->string('kode_gejala')->unique();
-            $table->text('nama_gejala');
+            $table->string('nama_gejala');
             $table->timestamps();
         });
     }

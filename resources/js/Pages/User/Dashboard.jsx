@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import UserCta from "../../Components/Dashboard/UserCta";
 import UserDiagnosaForm from "../../Components/Dashboard/UserDiagnosaForm";
 import UserDiagnosaTerakhir from "../../Components/Dashboard/UserDiagnosaTerakhir";
-import UserDiagramBulat from "../../Components/Dashboard/UserDiagramBulat";
 import Admin from "../../Layouts/Admin";
 
 export default function Dashboard() {
@@ -23,7 +22,7 @@ export default function Dashboard() {
 
                     {!Tab && (
                         <>
-                            <div className="col-span-2 h-full">
+                            <div className="col-span-2 h-full shadow-xl shadow-blue-600/10">
                                 <UserDiagnosaTerakhir />
                             </div>
                         </>

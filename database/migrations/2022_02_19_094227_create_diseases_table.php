@@ -17,7 +17,7 @@ class CreateDiseasesTable extends Migration
             $table->id();
             $table->string('kode_penyakit')->unique();
             $table->string('nama_penyakit', 200)->unique();
-            $table->text('tingkat_keparahan');
+            $table->string('tingkat_keparahan');
             $table->text('keterangan');
             $table->text('saran');
             $table->string('gambar');

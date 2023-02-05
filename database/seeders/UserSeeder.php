@@ -44,33 +44,5 @@ class UserSeeder extends Seeder
         ]);
 
         $user2->assignRole('user');
-
-        $user3 = User::create([
-            'name' => 'dalle',
-            'username' => 'dalle',
-            'email' => 'dalle1701@gmail.com',
-            'address' => 'Tanjung Pangimpuan',
-            'tanggal_lahir' => Date('1996-01-17'),
-            'profil' => "default",
-            'jenis_kelamin' => 'Perempuan',
-            'password' => Hash::make('1234')
-
-        ]);
-
-        $user3->assignRole('user');
-
-        $user4 = User::create([
-            'name' => 'Dai Saputra',
-            'username' => 'dai',
-            'email' => 'dai1904@gmail.com',
-            'address' => 'BTN Alyuna 2',
-            'tanggal_lahir' => Date('1999-04-19'),
-            'profil' => "default",
-            'jenis_kelamin' => 'Laki-laki',
-            'password' => Hash::make('1234')
-
-        ]);
-
-        $user4->assignRole('user');
     }
 }
