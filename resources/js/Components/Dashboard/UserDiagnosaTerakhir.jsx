@@ -1,7 +1,9 @@
 import { usePage } from "@inertiajs/inertia-react";
 import moment from "moment";
-import React from "react";
+import React, { useState } from "react";
 import * as FaIcons from "react-icons/fa";
+import { Line, Circle } from "rc-progress";
+import * as IoIcons from "react-icons/io";
 
 const UserDiagnosaTerakhir = () => {
     const { lastcheck } = usePage().props;
@@ -9,6 +11,36 @@ const UserDiagnosaTerakhir = () => {
     const hasildiagnosa = lastcheck
         ? JSON.parse(lastcheck?.hasildiagnosa)
         : null;
+    const hasil = JSON.parse(lastcheck?.hasil);
+    const [TabP, setTabP] = useState(false);
+
+    const showlistpenyakit = (data) => {
+        console.log(data);
+        let lenght = data.lenght;
+        return data?.map((data, key) => (
+            <ul className="w-full pt-1 text-sm" key={key}>
+                {1 + key}.{showhasil(data.nama_penyakit)}
+                {/* {data.nama_penyakit?.map((nama_penyakit, key) => (
+                    <span key={key}> {nama_penyakit}, </span>
+                ))} */}
+                <li className="flex space-x-1 items-center">
+                    <div className="flex-grow">
+                        <Line
+                            strokeWidth={2}
+                            trailWidth={2}
+                            strokeLinecap="square"
+                            strokeColor={"#3CA3EC"}
+                            percent={data.bobot}
+                        />
+                    </div>
+                    <div className="font-semibold w-10 text-right">
+                        {data.bobot.toFixed(0)}%
+                    </div>
+                </li>
+            </ul>
+        ));
+    };
+
     const showhasil = (data) => {
         let length = data.length;
         return data?.map((data, key) => (
@@ -54,8 +86,23 @@ const UserDiagnosaTerakhir = () => {
                                 "DD/MM/YYYY"
                             )}
                         </div>
-                        <div className="w-40 h-40 rounded-full bg-slate-300 flex items-center justify-center">
+                        {/* <div className="w-40 h-40 rounded-full bg-slate-300 flex items-center justify-center">
                             <div className="text-4xl text-center">
+                                {hasildiagnosa?.bobot.toFixed(1)}%
+                            </div>
+                        </div> */}
+                        <div className="w-40 h-40 relative flex items-center justify-center">
+                            <div className="w-40 h-40">
+                                <Circle
+                                    percent={hasildiagnosa?.bobot.toFixed(1)}
+                                    strokeWidth={6}
+                                    trailWidth={5}
+                                    strokeLinecap="square"
+                                    strokeColor={"#3CA3EC"}
+                                    // strokeColor="#D3D3D3"
+                                />
+                            </div>
+                            <div className="w-40 h-40 flex absolute text-center items-center justify-center text-3xl">
                                 {hasildiagnosa?.bobot.toFixed(1)}%
                             </div>
                         </div>
@@ -65,6 +112,41 @@ const UserDiagnosaTerakhir = () => {
                         <div className="">
                             Tingkat Keparahan :{" "}
                             {showtingkat(hasildiagnosa?.penyakit)}
+                        </div>
+                        <button
+                            className="text-sm hover:text-base transform duration-300 text-black hover:text-blue-400"
+                            type="button"
+                            onClick={() => {
+                                if (TabP) {
+                                    setTabP(false);
+                                } else {
+                                    setTabP(true);
+                                }
+                            }}
+                        >
+                            {TabP ? (
+                                <div className="flex items-center justify-center">
+                                    Sembunyikan{" "}
+                                    <span>
+                                        <IoIcons.IoMdArrowDropdown />{" "}
+                                    </span>
+                                </div>
+                            ) : (
+                                <div className="flex items-center justify-center">
+                                    Selengkapnya{" "}
+                                    <span>
+                                        <IoIcons.IoMdArrowDropright />{" "}
+                                    </span>
+                                </div>
+                            )}
+                        </button>
+                        <div
+                            className={`w-full ${TabP ? "visible" : "hidden"}`}
+                        >
+                            <div className="text-base font-semibold">
+                                Persentase Kemungkinan lainnya :
+                            </div>
+                            {showlistpenyakit(hasil)}
                         </div>
                     </div>
                 </div>

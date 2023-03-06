@@ -4,7 +4,7 @@ import * as MdIcons from "react-icons/md";
 const UserCta = ({ auth, setTab, Tab }) => {
     return (
         <div
-            className={`flex bg-white p-5 gap-3 rounded-lg h-full shadow-xl shadow-blue-600/10 ${
+            className={`flex bg-white p-5 gap-3 rounded-lg h-96 shadow-xl shadow-blue-600/10 ${
                 !Tab ? "visible" : "hidden"
             }`}
         >
