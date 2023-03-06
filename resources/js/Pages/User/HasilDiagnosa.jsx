@@ -1,21 +1,56 @@
 import { Link, usePage } from "@inertiajs/inertia-react";
 import moment from "moment/moment";
-import React from "react";
+import React, { useState } from "react";
 import Admin from "../../Layouts/Admin";
+import { Line, Circle } from "rc-progress";
+import { Tab } from "@headlessui/react";
+import * as IoIcons from "react-icons/io";
 
 export default function HasilDiagnosa() {
     const { user, riwayat } = usePage().props;
     const hipotesa = JSON.parse(riwayat?.hipotesa);
     const hasildiagnosa = JSON.parse(riwayat?.hasildiagnosa);
+    const hasil = JSON.parse(riwayat.hasil);
+
+    const [TabP, setTabP] = useState(false);
     console.log(hipotesa, hasildiagnosa);
     const showhasil = (data) => {
         let length = data.length;
         return data?.map((data, key) => (
-            <span key={key}>
+            <span className="" key={key}>
                 {""}
                 {data}
                 {key == length - 1 ? "" : ", "}
             </span>
+        ));
+    };
+
+    const showlistpenyakit = (data) => {
+        // Ini Function untuk panggil variabel smua kemungkinan presentase hasil diagnosa
+        console.log(data);
+        let lenght = data.lenght;
+        return data?.map((data, key) => (
+            <ul className="w-full pt-1 text-sm" key={key}>
+                {1 + key}.{showhasil(data.nama_penyakit)}
+                {/* {data.nama_penyakit?.map((nama_penyakit, key) => (
+                    <span key={key}> {nama_penyakit}, </span>
+                ))} */}
+                <li className="flex space-x-1 items-center">
+                    <div className="flex-grow">
+                        {/* ini coding munculkan line bar */}
+                        <Line
+                            strokeWidth={2}
+                            trailWidth={2}
+                            strokeLinecap="square"
+                            strokeColor={"#3CA3EC"}
+                            percent={data.bobot}
+                        />
+                    </div>
+                    <div className="font-semibold w-10 text-right">
+                        {data.bobot.toFixed(0)}%
+                    </div>
+                </li>
+            </ul>
         ));
     };
 
@@ -83,7 +118,7 @@ export default function HasilDiagnosa() {
                                 <img
                                     src={cekgambar(user?.profil)}
                                     alt=""
-                                    className="w-40 h-40 rounded-full"
+                                    className="w-40 h-40 rounded-full object-cover"
                                 ></img>
                             </div>
                             <div>
@@ -129,24 +164,79 @@ export default function HasilDiagnosa() {
                             </div>
                         </div>
                     </div>
-                    <div className="w-2/5 mx-4 space-y-4 bg-white  rounded-xl  p-3 flex flex-col items-center shadow-xl shadow-blue-600/10">
+                    <div className="w-2/5 mx-4 space-y-4 bg-white  rounded-xl p-3 flex flex-col items-center shadow-xl shadow-blue-600/10">
                         <div className="text-lg">
                             {" "}
                             {moment(riwayat?.waktudiagnosa).format(
                                 "DD MMMM YYYY"
                             )}
                         </div>
-                        <div className="w-40 h-40 rounded-full bg-slate-300 flex items-center justify-center ">
+                        {/* <div className="w-40 h-40 rounded-full bg-slate-300 flex items-center justify-center ">
                             <div className="text-4xl">
                                 {hasildiagnosa?.bobot.toFixed(1)}%
                             </div>
+                        </div> */}
+
+                        <div className="w-40 h-40 relative flex items-center justify-center">
+                            <div className="w-40 h-40">
+                                {/* Ini coding munculkan Circle bar hasil kesimpulan dagnosa */}
+                                <Circle
+                                    percent={hasildiagnosa?.bobot.toFixed(1)}
+                                    strokeWidth={6}
+                                    trailWidth={5}
+                                    strokeLinecap="square"
+                                    strokeColor={"#3CA3EC"}
+                                    // strokeColor="#D3D3D3"
+                                />
+                            </div>
+                            <div className="w-40 h-40 flex absolute text-center items-center justify-center text-3xl">
+                                {hasildiagnosa?.bobot.toFixed(1)}%
+                            </div>
                         </div>
-                        <div className="text-lg font-bold">
+                        <div className="text-lg font-bold text-center">
                             {showhasil(hasildiagnosa?.penyakit)}
+                            {/* {"(" + hasildiagnosa?.bobot.toFixed(1) + "%)"} */}
                         </div>
-                        <div className="-pt-2">
+                        <div className="-mt-5">
                             Tingkat Keparahan :{" "}
                             {showtingkat(hasildiagnosa?.penyakit)}
+                        </div>
+                        <button
+                            className="text-sm hover:text-base transform duration-300 text-black hover:text-blue-400"
+                            type="button"
+                            onClick={() => {
+                                if (TabP) {
+                                    setTabP(false);
+                                } else {
+                                    setTabP(true);
+                                }
+                            }}
+                        >
+                            {/* Dsisni klau mau ba styling button selengkapnya / sembunyikan */}
+                            {TabP ? (
+                                <div className="flex items-center justify-center">
+                                    Sembunyikan{" "}
+                                    <span>
+                                        <IoIcons.IoMdArrowDropdown />{" "}
+                                    </span>
+                                </div>
+                            ) : (
+                                <div className="flex items-center justify-center">
+                                    Selengkapnya{" "}
+                                    <span>
+                                        <IoIcons.IoMdArrowDropright />{" "}
+                                    </span>
+                                </div>
+                            )}
+                        </button>
+                        {/* Ini tab hidden selenkapnya presentase kemungkinan lainnya */}
+                        <div
+                            className={`w-full ${TabP ? "visible" : "hidden"}`}
+                        >
+                            <div className="text-base font-semibold">
+                                Persentase Kemungkinan lainnya :
+                            </div>
+                            {showlistpenyakit(hasil)}
                         </div>
                     </div>
                 </div>

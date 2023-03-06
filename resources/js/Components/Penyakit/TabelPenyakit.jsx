@@ -76,10 +76,11 @@ export default function TabelPenyakit(props) {
                                     className="h-24"
                                     src={penyakit.gambar.replace(
                                         "public",
-                                        "storage"
+                                        "/storage"
                                     )}
                                     alt="gambar penyakit"
                                 />
+                                // <div className="">{penyakit.gambar}</div>
                             ),
                             _(
                                 <button
@@ -149,7 +150,7 @@ export default function TabelPenyakit(props) {
                         "text-gray-800 px-2 py-1 rounded bg-gray-100 hover:bg-gray-200",
                     paginationButtonNext:
                         "text-gray-800 px-2 py-1 rounded bg-gray-100 hover:bg-gray-200",
-                    notfound: "font-semibold h-48 bg-empty text-center"
+                    notfound: "font-semibold h-48 bg-empty text-center",
                 }}
                 language={{
                     search: {

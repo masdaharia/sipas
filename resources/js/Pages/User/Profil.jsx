@@ -31,7 +31,7 @@ export default function Profil() {
             return "../../../img/Profile.jpg";
         } else {
             const path = gambar.replace("public", "/storage");
-            console.log("3333 path: ", path);
+            // console.log("3333 path: ", path);
             return path;
         }
     };

@@ -67,7 +67,11 @@ export default function TabelArtikel(props) {
                         data.map((artikel, index) => [
                             index + 1,
                             artikel.judul_artikel,
-                            artikel.isi_artikel,
+                            // _(
+                            //     <div style={{ whiteSpace: "pre-line" }}>
+                            //         {artikel.isi_artikel}
+                            //     </div>
+                            // ),
                             artikel.sumber_artikel,
 
                             _(
@@ -75,7 +79,7 @@ export default function TabelArtikel(props) {
                                     className="h-24"
                                     src={artikel.gambar.replace(
                                         "public",
-                                        "storage"
+                                        "/storage"
                                     )}
                                     alt="gambar artikel"
                                 />
@@ -114,10 +118,10 @@ export default function TabelArtikel(props) {
                 }}
                 columns={[
                     { name: "No", width: "5%" },
-                    "Judul Artikel",
-                    "Isi Artikel",
-                    "Sumber Artikel",
-                    "Gambar",
+                    { name: "Judul Artikel", width: "50%" },
+                    // "Isi Artikel",
+                    { name: "Sumber Artikel", width: "25%" },
+                    { name: "Gambar", width: "25%" },
 
                     { name: "Aksi", width: "10px" },
                     { name: "", width: "10px" },
@@ -147,7 +151,7 @@ export default function TabelArtikel(props) {
                         "text-gray-800 px-2 py-1 rounded bg-gray-100 hover:bg-gray-200",
                     paginationButtonNext:
                         "text-gray-800 px-2 py-1 rounded bg-gray-100 hover:bg-gray-200",
-                    notfound: "font-semibold h-48 bg-empty text-center"
+                    notfound: "font-semibold h-48 bg-empty text-center",
                 }}
                 language={{
                     search: {

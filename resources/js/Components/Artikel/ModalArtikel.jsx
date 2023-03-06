@@ -108,7 +108,7 @@ export default function ModalArtikel() {
                     </div>
                     <div className="flex flex-col space-y-1">
                         <h1 className="text-gray-500 text-sm">Isi Artikel</h1>
-                        <input
+                        <textarea
                             onChange={(e) => {
                                 setDataArtikel((dataArtikel) => ({
                                     ...dataArtikel,
@@ -120,7 +120,9 @@ export default function ModalArtikel() {
                             name="isi_artikel"
                             id="isi_artikel"
                             className="border-2 border-gray-200 focus:border-white focus:outline-none focus:ring focus:ring-gray-400 transition duration-200 rounded-lg"
-                        />
+                        >
+                            {dataArtikel.isi_artikel}
+                        </textarea>
                         {error?.isi_artikel && (
                             <span className="text-xs text-red-500">
                                 {error?.isi_artikel}

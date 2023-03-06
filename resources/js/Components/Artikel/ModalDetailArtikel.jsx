@@ -17,7 +17,14 @@ export default function ModalDetailArtikel({}) {
                     alt={data?.judul_artikel}
                 />
                 <h2 className="font-bold mt-2">{data?.judul_artikel}</h2>
-                <p>{data?.isi_artikel}</p>
+                <p>
+                    <div
+                        style={{ whiteSpace: "pre-line" }}
+                        className="text-justify"
+                    >
+                        {data?.isi_artikel}
+                    </div>
+                </p>
                 <h3 className="text-gray-700 text-xs italic">
                     Sumber : {data?.sumber_artikel}
                 </h3>
