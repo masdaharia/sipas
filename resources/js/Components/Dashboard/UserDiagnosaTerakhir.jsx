@@ -11,7 +11,7 @@ const UserDiagnosaTerakhir = () => {
     const hasildiagnosa = lastcheck
         ? JSON.parse(lastcheck?.hasildiagnosa)
         : null;
-    const hasil = JSON.parse(lastcheck?.hasil);
+    const hasil = lastcheck ? JSON.parse(lastcheck?.hasil) : null;
     const [TabP, setTabP] = useState(false);
 
     const showlistpenyakit = (data) => {
