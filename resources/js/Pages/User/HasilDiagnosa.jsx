@@ -6,6 +6,16 @@ import { Line, Circle } from "rc-progress";
 import { Tab } from "@headlessui/react";
 import * as IoIcons from "react-icons/io";
 
+const sortByBobot = (firstData, secondData) => {
+    if (firstData?.bobot < secondData?.bobot) {
+        return 1;
+    }
+    if (firstData?.bobot > secondData?.bobot) {
+        return -1;
+    }
+    return 0;
+};
+
 export default function HasilDiagnosa() {
     const { user, riwayat } = usePage().props;
     const hipotesa = JSON.parse(riwayat?.hipotesa);
@@ -27,14 +37,10 @@ export default function HasilDiagnosa() {
 
     const showlistpenyakit = (data) => {
         // Ini Function untuk panggil variabel smua kemungkinan presentase hasil diagnosa
-        console.log(data);
-        let lenght = data.lenght;
-        return data?.map((data, key) => (
+
+        return data?.sort(sortByBobot)?.map((data, key) => (
             <ul className="w-full pt-1 text-sm" key={key}>
                 {1 + key}.{showhasil(data.nama_penyakit)}
-                {/* {data.nama_penyakit?.map((nama_penyakit, key) => (
-                    <span key={key}> {nama_penyakit}, </span>
-                ))} */}
                 <li className="flex space-x-1 items-center">
                     <div className="flex-grow">
                         {/* ini coding munculkan line bar */}
@@ -47,7 +53,7 @@ export default function HasilDiagnosa() {
                         />
                     </div>
                     <div className="font-semibold w-10 text-right">
-                        {data.bobot.toFixed(0)}%
+                        {data.bobot.toFixed(1)}%
                     </div>
                 </li>
             </ul>
