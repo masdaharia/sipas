@@ -22,7 +22,7 @@ const UserDiagnosaForm = ({ gejala, Tab, setTab }) => {
     };
 
     const handleClickDetail = (currentId) => {
-        if (openDetail) {
+        if (openDetail === currentId) {
             setOpenDetail("");
         } else {
             setOpenDetail(currentId);
@@ -79,16 +79,19 @@ const UserDiagnosaForm = ({ gejala, Tab, setTab }) => {
                             </div>
                             {openDetail === gej.id && (
                                 <div className="w-full p-4">
-                                    <div className="w-full aspect-video overflow-hidden">
-                                        <img
-                                            className="object-cover w-full"
-                                            src={gej.gambar?.replace(
-                                                "public",
-                                                "/storage"
-                                            )}
-                                            alt="gambar_gejala"
-                                        />
-                                    </div>
+                                    {gej.gambar && (
+                                        <div className="w-full aspect-video overflow-hidden">
+                                            <img
+                                                className="object-cover w-full"
+                                                src={gej.gambar?.replace(
+                                                    "public",
+                                                    "/storage"
+                                                )}
+                                                alt="gambar_gejala"
+                                            />
+                                        </div>
+                                    )}
+
                                     <p className="italic text-gray-600 mt-2">
                                         {gej.deskripsi}
                                     </p>
