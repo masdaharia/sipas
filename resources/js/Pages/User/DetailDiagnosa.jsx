@@ -4,6 +4,16 @@ import "gridjs/dist/theme/mermaid.css";
 import { Link, usePage } from "@inertiajs/inertia-react";
 import Admin from "../../Layouts/Admin";
 
+const sortByBobot = (firstData, secondData) => {
+    if (firstData?.bobot < secondData?.bobot) {
+        return 1;
+    }
+    if (firstData?.bobot > secondData?.bobot) {
+        return -1;
+    }
+    return 0;
+};
+
 export default function DetailDiagnosa() {
     const tableGejala = useRef(null);
     const wrapperGejala = useRef(null);
@@ -297,7 +307,7 @@ export default function DetailDiagnosa() {
 
                     <div className="bg-teal-200 rounded-xl p-5 flex flex-col space-y-4">
                         <h1 className="text-xl">Hasil : </h1>
-                        {hasil.map((h, key) => (
+                        {hasil?.sort(sortByBobot)?.map((h, key) => (
                             <div key={key}>
                                 <div className="flex">
                                     <div className="text-lg">

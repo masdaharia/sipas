@@ -5,9 +5,18 @@ import * as FaIcons from "react-icons/fa";
 import { Line, Circle } from "rc-progress";
 import * as IoIcons from "react-icons/io";
 
+const sortByBobot = (firstData, secondData) => {
+    if (firstData?.bobot < secondData?.bobot) {
+        return 1;
+    }
+    if (firstData?.bobot > secondData?.bobot) {
+        return -1;
+    }
+    return 0;
+};
+
 const UserDiagnosaTerakhir = () => {
     const { lastcheck } = usePage().props;
-    // console.log(lastcheck?);
     const hasildiagnosa = lastcheck
         ? JSON.parse(lastcheck?.hasildiagnosa)
         : null;
@@ -15,14 +24,9 @@ const UserDiagnosaTerakhir = () => {
     const [TabP, setTabP] = useState(false);
 
     const showlistpenyakit = (data) => {
-        console.log(data);
-        let lenght = data.lenght;
-        return data?.map((data, key) => (
+        return data?.sort(sortByBobot)?.map((data, key) => (
             <ul className="w-full pt-1 text-sm" key={key}>
                 {1 + key}.{showhasil(data.nama_penyakit)}
-                {/* {data.nama_penyakit?.map((nama_penyakit, key) => (
-                    <span key={key}> {nama_penyakit}, </span>
-                ))} */}
                 <li className="flex space-x-1 items-center">
                     <div className="flex-grow">
                         <Line
@@ -34,7 +38,7 @@ const UserDiagnosaTerakhir = () => {
                         />
                     </div>
                     <div className="font-semibold w-10 text-right">
-                        {data.bobot.toFixed(0)}%
+                        {data.bobot.toFixed(1)}%
                     </div>
                 </li>
             </ul>
@@ -52,7 +56,7 @@ const UserDiagnosaTerakhir = () => {
         ));
     };
     const showtingkat = (data) => {
-        var p = data.toString();
+        let p = data.toString();
         if (p.match(/Nodula.*/) || p.match(/Kista.*/)) {
             return (
                 <span className="text-white py-1 px-2 capitalize bg-red-400 rounded-lg">
