@@ -6,12 +6,14 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { modalData, modalToggle } from "../../Store/Modal";
 
 export default function ModalGejala() {
-    const [showModal, setShowModal] = useRecoilState(modalToggle);
+    const [, setShowModal] = useRecoilState(modalToggle);
     const editData = useRecoilValue(modalData);
 
     const [dataGejala, setDataGejala] = useState({
         kode_gejala: "",
         nama_gejala: "",
+        gambar: "",
+        deskripsi: "",
     });
 
     const [error, setError] = useState();
@@ -31,6 +33,8 @@ export default function ModalGejala() {
                         ...dataGejala,
                         kode_gejala: "",
                         nama_gejala: "",
+                        gambar: "",
+                        deskripsi: "",
                     }));
                     setError(null);
                     toast.success("Gejala berhasil diubah!");
@@ -47,6 +51,8 @@ export default function ModalGejala() {
                         ...dataGejala,
                         kode_gejala: "",
                         nama_gejala: "",
+                        gambar: "",
+                        deskripsi: "",
                     }));
                     setError(null);
                     toast.success("Gejala berhasil ditambahkan!");
@@ -61,6 +67,8 @@ export default function ModalGejala() {
             id: editData?.id,
             kode_gejala: editData?.kode_gejala,
             nama_gejala: editData?.nama_gejala,
+            gambar: editData?.gambar,
+            deskripsi: editData?.deskripsi,
         }));
     }, [editData]);
 
@@ -116,6 +124,46 @@ export default function ModalGejala() {
                         {error?.nama_gejala && (
                             <span className="text-xs text-red-500">
                                 {error?.nama_gejala}
+                            </span>
+                        )}
+                    </div>
+                    <div className="flex flex-col space-y-1">
+                        <h1 className="text-gray-500 text-sm">Deskripsi</h1>
+                        <textarea
+                            onChange={(e) => {
+                                setDataGejala((dataGejala) => ({
+                                    ...dataGejala,
+                                    deskripsi: e.target.value,
+                                }));
+                            }}
+                            value={dataGejala.deskripsi}
+                            name="deskripsi"
+                            id="deskripsi"
+                            className="border-2 border-gray-200 focus:border-white focus:outline-none focus:ring focus:ring-gray-400 transition duration-200 rounded-lg"
+                        />
+                        {error?.deskripsi && (
+                            <span className="text-xs text-red-500">
+                                {error?.deskripsi}
+                            </span>
+                        )}
+                    </div>
+                    <div className="flex flex-col space-y-1">
+                        <h1 className="text-gray-500 text-sm">Gambar Gejala</h1>
+                        <input
+                            onChange={(e) => {
+                                setDataGejala((dataGejala) => ({
+                                    ...dataGejala,
+                                    gambar: e.target.files,
+                                }));
+                            }}
+                            type="file"
+                            name="gambar"
+                            id="gambar"
+                            className="border-2 border-gray-200 focus:border-white focus:outline-none focus:ring focus:ring-gray-400 transition duration-200 rounded-lg"
+                        />
+                        {error?.gambar && (
+                            <span className="text-xs text-red-500">
+                                {error?.gambar}
                             </span>
                         )}
                     </div>

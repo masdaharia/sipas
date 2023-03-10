@@ -68,6 +68,17 @@ export default function TabelGejala(props) {
                             index + 1,
                             gejala.kode_gejala,
                             gejala.nama_gejala,
+                            gejala.deskripsi,
+                            _(
+                                <img
+                                    className="h-24"
+                                    src={gejala.gambar?.replace(
+                                        "public",
+                                        "/storage"
+                                    )}
+                                    alt="gambar gejala"
+                                />
+                            ),
                             _(
                                 <button
                                     onClick={() => {
@@ -97,7 +108,15 @@ export default function TabelGejala(props) {
                             ),
                         ]),
                 }}
-                columns={["No", "Kode Gejala", "Nama Gejala", "Aksi", ""]}
+                columns={[
+                    "No",
+                    "Kode Gejala",
+                    "Nama Gejala",
+                    "Deskripsi",
+                    "Gambar",
+                    "Aksi",
+                    "",
+                ]}
                 search={true}
                 pagination={{
                     enabled: true,

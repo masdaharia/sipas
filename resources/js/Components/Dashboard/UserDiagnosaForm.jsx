@@ -3,10 +3,12 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import * as MdIcons from "react-icons/md";
+import * as AiIcons from "react-icons/ai";
 
 const UserDiagnosaForm = ({ gejala, Tab, setTab }) => {
     const { register, handleSubmit } = useForm();
     const [Error, setError] = useState();
+    const [openDetail, setOpenDetail] = useState("");
     const diagnosa = (data) => {
         Inertia.post("diagnosa", data, {
             onSuccess: () => {
@@ -17,6 +19,14 @@ const UserDiagnosaForm = ({ gejala, Tab, setTab }) => {
                 e.type && toast[e.type](e.message);
             },
         });
+    };
+
+    const handleClickDetail = (currentId) => {
+        if (openDetail) {
+            setOpenDetail("");
+        } else {
+            setOpenDetail(currentId);
+        }
     };
 
     return (
@@ -39,23 +49,51 @@ const UserDiagnosaForm = ({ gejala, Tab, setTab }) => {
                 {gejala?.map((gej, key) => {
                     return (
                         <div
-                            className=" h-8 flex items-center mb-4 mt-3 bg-gray-300 rounded-md"
+                            className="h-max py-2  mb-4 mt-3 bg-gray-100 rounded-md "
                             name="gejala"
                             key={key}
                         >
-                            <input
-                                id={"gejala-" + gej.id}
-                                type="checkbox"
-                                {...register("gejala")}
-                                value={gej.id}
-                                className="ml-4 w-4 h-4 text-blue-700 bg-gray-400 rounded border-gray-300"
-                            />
-                            <label
-                                className="m-4 text-sm font-medium leading-none text-gray-900"
-                                htmlFor={"gejala-" + gej.id}
-                            >
-                                {gej.nama_gejala}
-                            </label>
+                            <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-4">
+                                    <input
+                                        id={"gejala-" + gej.id}
+                                        type="checkbox"
+                                        {...register("gejala")}
+                                        value={gej.id}
+                                        className="ml-4 text-blue-700 bg-gray-300 rounded border-gray-300 cursor-pointer"
+                                    />
+                                    <label
+                                        className=" text-sm font-medium leading-snug text-gray-900"
+                                        htmlFor={"gejala-" + gej.id}
+                                    >
+                                        {gej.nama_gejala}
+                                    </label>
+                                </div>
+                                <span
+                                    onClick={() => handleClickDetail(gej.id)}
+                                    className="mx-4 cursor-pointer"
+                                    title="detail"
+                                >
+                                    <AiIcons.AiFillQuestionCircle className="text-gray-400" />
+                                </span>
+                            </div>
+                            {openDetail === gej.id && (
+                                <div className="w-full p-4">
+                                    <div className="w-full aspect-video overflow-hidden">
+                                        <img
+                                            className="object-cover w-full"
+                                            src={gej.gambar?.replace(
+                                                "public",
+                                                "/storage"
+                                            )}
+                                            alt="gambar_gejala"
+                                        />
+                                    </div>
+                                    <p className="italic text-gray-600 mt-2">
+                                        {gej.deskripsi}
+                                    </p>
+                                </div>
+                            )}
                         </div>
                     );
                 })}
