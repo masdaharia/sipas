@@ -49,13 +49,13 @@ class GejalaController extends Controller
             'kode_gejala.required' => 'Kode Gejala belum di isi!',
             'deskripsi.required' => 'Deskripsi tidak boleh kosong!',
         ]);
-        if ($request->gambar) {
+        if ($request->gambar[0]) {
             $path = $request->gambar[0]->store('public/gambar');
         }
         $cek = Symptom::where('id', $request->id)->first();
         if ($cek->kode_gejala == $request->kode_gejala && $cek->nama_gejala == $request->nama_gejala) {
 
-            if ($path) {
+            if ($request->gambar[0]) {
                 Symptom::where('id', $request->id)->update([
                     'kode_gejala' => $request->kode_gejala,
                     'nama_gejala' => $request->nama_gejala,
@@ -100,7 +100,7 @@ class GejalaController extends Controller
                 ]);
             }
         }
-        if ($path) {
+        if ($request->gambar[0]) {
             Symptom::where('id', $request->id)->update([
                 'kode_gejala' => $request->kode_gejala,
                 'nama_gejala' => $request->nama_gejala,
